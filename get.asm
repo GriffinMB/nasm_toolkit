@@ -39,6 +39,7 @@ _main:
 		lea 		rdi, [rel filename]
 		lea 		rsi, [rel write_perm]
 		call 		_fopen
+        test        rax, rax
 		jz 			error
 		mov 		r13, rax
 
@@ -73,16 +74,12 @@ pwrite:
 
 section .data
 
-print:
-		db 			"p: %s", 10, 0
 print_err:
 		db 			"An error occurred.", 10, 0
 filename:
 		db 			"filename.txt", 0
 write_perm:
 		db 			"wb", 0
-url:
-		db 			"https://griffinbyatt.com", 0
 
 
 ; curl constants
