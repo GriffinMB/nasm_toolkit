@@ -22,8 +22,8 @@ _main:
         jne         error
 
         ; CURL *curl_easy_init();
-        call 		_curl_easy_init
-        mov 		r12, rax
+        call        _curl_easy_init
+        mov         r12, rax
 
         ; CURLcode curl_easy_setopt(CURL *handle, CURLoption option, parameter);
         movd        rdi, r12
@@ -75,11 +75,11 @@ pwrite:
 section .data
 
 print_err:
-		db          "An error occurred.", 10, 0
+        db          "An error occurred.", 10, 0
 filename:
-		db          "filename.txt", 0
+        db          "filename.txt", 0
 write_perm:
-		db          "wb", 0
+        db          "wb", 0
 
 
 ; curl constants
