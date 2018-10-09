@@ -26,27 +26,27 @@ _main:
         mov         r12, rax
 
         ; CURLcode curl_easy_setopt(CURL *handle, CURLoption option, parameter);
-        movd        rdi, r12
-        movd        rsi, CURLOPT_URL
-        movd        rdx, [rbp-16]
-        calld       _curl_easy_setopt
+        mov         rdi, r12
+        mov         rsi, CURLOPT_URL
+        mov         rdx, [rbp-16]
+        call        _curl_easy_setopt
 
-        movd        rdi, r12
-        movd        rsi, CURLOPT_WRITEFUNCTION
-        lead        rdx, [rel pwrite]
-        calld       _curl_easy_setopt
+        mov         rdi, r12
+        mov         rsi, CURLOPT_WRITEFUNCTION
+        lea         rdx, [rel pwrite]
+        call        _curl_easy_setopt
 
-        lead        rdi, [rel filename]
-        lead        rsi, [rel write_perm]
-        calld       _fopen
-        testd       rax, rax
-        jzd         error
-        movd        r13, rax
+        lea         rdi, [rel filename]
+        lea         rsi, [rel write_perm]
+        call        _fopen
+        test        rax, rax
+        jz          error
+        mov         r13, rax
 
-        movd        rdi, r12
-        movd        rsi, CURLOPT_WRITEDATA
-        movd        rdx, r13
-        calld       _curl_easy_setopt
+        mov         rdi, r12
+        mov         rsi, CURLOPT_WRITEDATA
+        mov         rdx, r13
+        call        _curl_easy_setopt
 
         ; CURLcode curl_easy_perform(CURL * easy_handle );
         mov         rdi, r12
