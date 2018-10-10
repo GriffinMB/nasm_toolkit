@@ -19,7 +19,7 @@ CURLOPT_WRITEDATA equ       10001
 section .text
 
 _main:
-		push        rbp
+        push        rbp
         lea         r12, [rel url]
 
         ; void *malloc();
@@ -28,7 +28,7 @@ _main:
         mov         r13, rax
 
 		; CURL *curl_easy_init();
-		call        _curl_easy_init
+        call        _curl_easy_init
         mov         r14, rax
 
         ; CURLcode curl_easy_setopt(CURL *handle, CURLoption option, parameter);
