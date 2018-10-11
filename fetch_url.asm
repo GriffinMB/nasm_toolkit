@@ -27,7 +27,7 @@ _main:
         call        _malloc
         mov         r13, rax
 
-		; CURL *curl_easy_init();
+        ; CURL *curl_easy_init();
         call        _curl_easy_init
         mov         r14, rax
 
