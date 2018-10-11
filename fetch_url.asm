@@ -56,7 +56,7 @@ _main:
         mov         rsi, rax
         call        _printf
 done:
-        pop rbp
+        pop         rbp
         ret    
 
 writemem:
